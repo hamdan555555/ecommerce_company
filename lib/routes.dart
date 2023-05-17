@@ -19,7 +19,7 @@ List<GetPage<dynamic>>? routes = [
     MyMiddleWare(),
   ]), 
   GetPage(name:AppRoute.login, page:()=> const Login()),
-  GetPage(name:AppRoute.signUp, page:()=> const SignUp()),
+  GetPage(name:AppRoute.signUp, page:()=> const CompanySignUp()),
   GetPage(name:AppRoute.forgetPassword, page:()=> const ForgetPassword()),
   GetPage(name:AppRoute.verifyCode, page:()=> const VerifyCode()),
   GetPage(name:AppRoute.resetPassword, page:()=> const ResetPassword()),
