@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class CompanySignUPController extends GetxController {
-  signup();
+ // signup();
   goToSignIn();
 }
 
@@ -19,7 +19,15 @@ class CompanySignUpControllerImp extends CompanySignUPController {
   late TextEditingController companyphone;
   late TextEditingController companyaddress;
   late TextEditingController companybio;
+//////////////////////////////////////////
+  late TextEditingController userName;
+  late TextEditingController password;
+  late TextEditingController email;
+  late TextEditingController phoneNumber;
 
+
+
+//////////////////////////////////
   String country = "country";
   String city = "city";
   String payment = "payment";
@@ -72,7 +80,7 @@ SignUpData signupData = SignUpData(Get.find());
       statusRequest = StatusRequest.loading;
       update();
       var response = await signupData.postData(
-          userName.text, password.text, email.text, phoneNumber.text);
+        userName.text, password.text, email.text, phoneNumber.text);
       print("=============controller $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {

@@ -4,6 +4,8 @@ class AppImageAsset {
   static const String onBoardingImageOne = '$rootImage/onboarding6.jpg';
   static const String onBoardingImageTwo = '$rootImage/onboarding5.jpg';
   static const String onBoardingImageThree = '$rootImage/onboarding4.jpg';
+  static const String background = 'images/pp.jpg';
+  static const String blueback = 'images/blueback.png';
   static const String logo = '$rootImage/logo.png';
   static const String loading = '$rootIcons/loading.json';
   static const String nodata = '$rootIcons/nodata.json';
