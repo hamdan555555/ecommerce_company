@@ -61,8 +61,9 @@ class CompanySignUpControllerImp extends CompanySignUPController {
     category = val;
     update();
   }
+  /////////////////////////////////////////////////////////////////////////
 SignUpData signupData = SignUpData(Get.find());
-  List data = [];
+    List data = [];
    StatusRequest? statusRequest;
  @override
   signup() async {
@@ -92,7 +93,7 @@ SignUpData signupData = SignUpData(Get.find());
       print(" not valid");
     }
   }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
   @override
   void onInit() {
     companyname = TextEditingController();
