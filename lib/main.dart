@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       // home: const Test(),
       //  routes: routes,
       getPages: routes,
+      // fuck you 
     );
   }
 }
