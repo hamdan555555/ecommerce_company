@@ -16,13 +16,16 @@ class TextSignUpOrIn extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(text1),
+        Text(
+          text1,
+          style: TextStyle(color: Colors.white),
+        ),
         InkWell(
           onTap: onTap,
           child: Text(
             text2,
             style: const TextStyle(
-                color: AppColor.blue, fontWeight: FontWeight.bold),
+                color: AppColor.colour3, fontWeight: FontWeight.bold),
           ),
         ),
       ],

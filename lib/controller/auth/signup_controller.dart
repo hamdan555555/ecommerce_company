@@ -16,21 +16,48 @@ abstract class CompanySignUPController extends GetxController {
 class CompanySignUpControllerImp extends CompanySignUPController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController companyname;
+  late TextEditingController companyemail;
+  late TextEditingController companypass;
   late TextEditingController companyphone;
   late TextEditingController companyaddress;
   late TextEditingController companybio;
 
-  String country = "country";
-  String city = "city";
-  String payment = "payment";
-  String category = "category";
+  String city = '23'.tr;
+  String payment = '25'.tr;
+  String category = '24'.tr;
 
-  final List<String> cities = ["Emirates", "Syria", "Egypt"];
-  final List<String> countryUAE = ["Abu Dhabi", "Dubai", "Sharjah"];
-  final List<String> countrySY = ["Damascus", "Aleppo", "Hama"];
-  final List<String> countryEGY = ["Alexandria", "Cairo", "Ghardaa"];
+  final List<String> cities = [
+    "Damascus",
+    "Aleppo",
+    "Hama",
+    "Lattakia",
+    "Homs",
+    "Tartus",
+    "Sweida",
+    "Edlep"
+  ];
 
-  List<String> City = [];
+  final List<String> categories = [
+    "clothing",
+    "Electrical",
+    "Electronics",
+    "Furniture",
+    "Stationary",
+    "Makeup And Perfumes",
+    "Accessories",
+  ];
+
+  final List<String> payments = [
+    "MTN Cash",
+    "Pay Pal",
+    "Visa Card",
+  ];
+
+  bool isShowpass = true;
+  showpassword() {
+    isShowpass = !isShowpass;
+    update();
+  }
 
   RxString imagepath = ''.obs;
 
@@ -40,11 +67,6 @@ class CompanySignUpControllerImp extends CompanySignUPController {
     if (image != null) {
       imagepath.value = image.path.toString();
     }
-  }
-
-  onChangedCountry(String val) {
-    country = val;
-    update();
   }
 
   onChangedCity(String val) {
@@ -61,17 +83,18 @@ class CompanySignUpControllerImp extends CompanySignUPController {
     category = val;
     update();
   }
-SignUpData signupData = SignUpData(Get.find());
+
+  SignUpData signupData = SignUpData(Get.find());
   List data = [];
-   StatusRequest? statusRequest;
- @override
+  StatusRequest? statusRequest;
+  @override
   signup() async {
     var formData = formState.currentState;
     if (formData!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
-      var response = await signupData.postData(
-          userName.text, password.text, email.text, phoneNumber.text);
+      var response = await signupData.postData(companyname.text,
+          companyemail.text, companypass.text, companyphone.text);
       print("=============controller $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
@@ -96,6 +119,8 @@ SignUpData signupData = SignUpData(Get.find());
   @override
   void onInit() {
     companyname = TextEditingController();
+    companyemail = TextEditingController();
+    companypass = TextEditingController();
     companyphone = TextEditingController();
     companyaddress = TextEditingController();
     companybio = TextEditingController();
@@ -105,6 +130,8 @@ SignUpData signupData = SignUpData(Get.find());
   @override
   void dispose() {
     companyname.dispose();
+    companyemail.dispose();
+    companypass.dispose();
     companyphone.dispose();
     companyaddress.dispose();
     companybio.dispose();

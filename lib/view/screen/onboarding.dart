@@ -16,10 +16,11 @@ class OnBoarding extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
+        bottom: false,
         child: Column(
           children: [
             const Expanded(
-              flex: 6,
+              flex: 2,
               child: CustomSlider(),
             ),
             Expanded(

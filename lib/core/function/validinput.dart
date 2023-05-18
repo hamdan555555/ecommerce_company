@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
 
 validInput(String val, int min, int max, String type) {
-  if (type == "username") {
+  if (type == "companyname") {
     if (!GetUtils.isUsername(val)) {
-      return "Enter Correct User Name ";
+      return "Enter Correct Company Name ";
     }
   }
 
-  if (type == "email") {
+  if (type == "companyemail") {
     if (!GetUtils.isEmail(val)) {
       return "Enter Correct Email";
     }
   }
-  if (type == "phone") {
+  if (type == "companyphone") {
     if (!GetUtils.isPhoneNumber(val)) {
       return "Enter Correct Phone Number";
     }

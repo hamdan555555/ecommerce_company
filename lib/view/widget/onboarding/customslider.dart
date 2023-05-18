@@ -18,7 +18,7 @@ class CustomSlider extends GetView<OnBoardingControllerImp> {
       itemCount: onBoardingList.length,
       itemBuilder: (context, index) => Column(
         children: [
-          const SizedBox(height: 60),
+          const SizedBox(height: 0),
           Text(
             onBoardingList[index].title!,
             style: const TextStyle(

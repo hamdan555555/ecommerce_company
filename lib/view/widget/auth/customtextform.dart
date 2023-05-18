@@ -42,7 +42,7 @@ class CustomTextForm extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           hintText: hintText,
-          hintStyle: const TextStyle(fontSize: 14),
+          hintStyle: const TextStyle(fontSize: 14, color: AppColor.colour2),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),

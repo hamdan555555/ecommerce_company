@@ -9,9 +9,10 @@ class CustomMainLabel extends StatelessWidget {
     return Text(
       mainLabel,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-            fontSize: 30,
-          ),
+      style: Theme.of(context)
+          .textTheme
+          .headlineLarge!
+          .copyWith(fontSize: 30, color: Colors.white),
     );
   }
 }

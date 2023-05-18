@@ -22,7 +22,7 @@ class CompanySignUp extends StatelessWidget {
       backgroundColor: AppColor.colour2,
       body: GetBuilder<CompanySignUpControllerImp>(
         builder: (controller) => Container(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 300),
           child: WillPopScope(
             onWillPop: alertExitApp,
             child: Form(
@@ -32,14 +32,14 @@ class CompanySignUp extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: CustomMainLabel(
-                      mainLabel: '21'.tr,
+                      mainLabel: '28'.tr,
                     ),
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   CustomBodyLabel(
-                    bodyLabel: '22'.tr,
+                    bodyLabel: '29'.tr,
                   ),
                   const SizedBox(
                     height: 30,
@@ -49,7 +49,7 @@ class CompanySignUp extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             backgroundColor: AppColor.colour3,
-                            radius: 55,
+                            radius: 70,
                             backgroundImage: controller.imagepath.isNotEmpty
                                 ? FileImage(
                                     File(controller.imagepath.toString()))
@@ -60,7 +60,7 @@ class CompanySignUp extends StatelessWidget {
                               child: Text(
                                 "set company image",
                                 style: TextStyle(
-                                    color: AppColor.colour3,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ))
                         ],
@@ -71,20 +71,42 @@ class CompanySignUp extends StatelessWidget {
                   CustomTextForm(
                     isNumber: false,
                     controller: controller.companyname,
-                    hintText: '23'.tr,
+                    hintText: '15'.tr,
                     labelText: '15'.tr,
                     iconData: Icons.person_outlined,
                     valid: (val) {
-                      return validInput(val!, 5, 50, "company name");
+                      return validInput(val!, 5, 50, "companyname");
                     },
                   ),
                   CustomTextForm(
+                      isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 20, 50, "companyemail");
+                      },
+                      controller: controller.companyemail,
+                      hintText: '6'.tr,
+                      labelText: '17'.tr,
+                      iconData: Icons.email),
+                  CustomTextForm(
+                      obscureText: controller.isShowpass,
+                      onTapIcon: () {
+                        controller.showpassword();
+                      },
                       isNumber: true,
                       valid: (val) {
-                        return validInput(val!, 5, 50, "phone");
+                        return validInput(val!, 5, 50, "companypass");
+                      },
+                      controller: controller.companypass,
+                      hintText: '8'.tr,
+                      labelText: '17'.tr,
+                      iconData: Icons.lock),
+                  CustomTextForm(
+                      isNumber: true,
+                      valid: (val) {
+                        return validInput(val!, 5, 50, "companyphone");
                       },
                       controller: controller.companyphone,
-                      hintText: '24'.tr,
+                      hintText: '16'.tr,
                       labelText: '17'.tr,
                       iconData: Icons.phone_android_outlined),
                   Padding(
@@ -106,7 +128,7 @@ class CompanySignUp extends StatelessWidget {
                                 BorderSide(color: AppColor.colour3, width: 2),
                           ),
                         ),
-                        hint: Text(controller.country),
+                        hint: Text(controller.city),
                         items: controller.cities
                             .map((e) => DropdownMenuItem(
                                   child: Center(child: Text("$e")),
@@ -114,58 +136,13 @@ class CompanySignUp extends StatelessWidget {
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          controller.onChangedCountry(value!);
                           controller.onChangedCity(controller.city);
-                        }),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: DropdownButtonFormField(
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          contentPadding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 35),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: AppColor.colour3, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: AppColor.colour3, width: 2),
-                          ),
-                        ),
-                        hint: Text(controller.city),
-                        items: controller.country == "Emirates"
-                            ? controller.countryUAE
-                                .map((e) => DropdownMenuItem(
-                                      child: Center(child: Text("$e")),
-                                      value: e,
-                                    ))
-                                .toList()
-                            : controller.country == "Egypt"
-                                ? controller.countryEGY
-                                    .map((e) => DropdownMenuItem(
-                                          child: Center(child: Text("$e")),
-                                          value: e,
-                                        ))
-                                    .toList()
-                                : controller.countrySY
-                                    .map((e) => DropdownMenuItem(
-                                          child: Center(child: Text("$e")),
-                                          value: e,
-                                        ))
-                                    .toList(),
-                        onChanged: (value) {
-                          controller.onChangedCity(value!);
                         }),
                   ),
                   CustomTextForm(
                     isNumber: false,
                     controller: controller.companyaddress,
-                    hintText: '27'.tr,
+                    hintText: '26'.tr,
                     labelText: '7'.tr,
                     iconData: Icons.location_on,
                     valid: (val) {
@@ -191,25 +168,55 @@ class CompanySignUp extends StatelessWidget {
                                 BorderSide(color: AppColor.colour3, width: 2),
                           ),
                         ),
-                        hint: Text(controller.payment),
-                        items: ["PayPal", "VisaCard", "MTN Cash"]
+                        hint: Text(controller.category),
+                        items: controller.categories
                             .map((e) => DropdownMenuItem(
                                   child: Center(child: Text("$e")),
                                   value: e,
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          controller.onChangedCountry(value!);
+                          controller.onChangedCategory(value!);
+                        }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: DropdownButtonFormField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding:
+                              EdgeInsets.symmetric(vertical: 5, horizontal: 35),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: AppColor.colour3, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: AppColor.colour3, width: 2),
+                          ),
+                        ),
+                        hint: Text(controller.category),
+                        items: controller.payments
+                            .map((e) => DropdownMenuItem(
+                                  child: Center(child: Text("$e")),
+                                  value: e,
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          controller.onChangedPayment(value!);
                         }),
                   ),
                   CustomTextForm(
                     isNumber: false,
                     controller: controller.companybio,
-                    hintText: '26'.tr,
+                    hintText: '27'.tr,
                     labelText: '7'.tr,
                     iconData: Icons.info,
                     valid: (val) {
-                      return validInput(val!, 20, 100, "bio");
+                      return validInput(val!, 20, 100, "companybio");
                     },
                   ),
                   CustomButtonAuth(

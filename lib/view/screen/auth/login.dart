@@ -33,7 +33,7 @@ class Login extends StatelessWidget {
       body: WillPopScope(
         onWillPop: alertExitApp,
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 300),
           child: Form(
             key: controller.formState,
             child: ListView(

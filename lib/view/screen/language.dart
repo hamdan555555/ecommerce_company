@@ -13,7 +13,7 @@ class Language extends GetView<LocaleController> {
     return Scaffold(
       backgroundColor: AppColor.backgroundcolor,
       body: Container(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 300),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
