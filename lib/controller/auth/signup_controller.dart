@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class CompanySignUPController extends GetxController {
-  signup();
+ // signup();
   goToSignIn();
 }
 
@@ -21,10 +21,25 @@ class CompanySignUpControllerImp extends CompanySignUPController {
   late TextEditingController companyphone;
   late TextEditingController companyaddress;
   late TextEditingController companybio;
+//////////////////////////////////////////
+  late TextEditingController userName;
+  late TextEditingController password;
+  late TextEditingController email;
+  late TextEditingController phoneNumber;
 
+<<<<<<< HEAD
   String city = '23'.tr;
   String payment = '25'.tr;
   String category = '24'.tr;
+=======
+
+
+//////////////////////////////////
+  String country = "country";
+  String city = "city";
+  String payment = "payment";
+  String category = "category";
+>>>>>>> df81ac94725f882d904f530588898975bae8fb83
 
   final List<String> cities = [
     "Damascus",
@@ -83,18 +98,31 @@ class CompanySignUpControllerImp extends CompanySignUPController {
     category = val;
     update();
   }
+<<<<<<< HEAD
 
   SignUpData signupData = SignUpData(Get.find());
   List data = [];
   StatusRequest? statusRequest;
   @override
+=======
+  /////////////////////////////////////////////////////////////////////////
+SignUpData signupData = SignUpData(Get.find());
+    List data = [];
+   StatusRequest? statusRequest;
+ @override
+>>>>>>> df81ac94725f882d904f530588898975bae8fb83
   signup() async {
     var formData = formState.currentState;
     if (formData!.validate()) {
       statusRequest = StatusRequest.loading;
       update();
+<<<<<<< HEAD
       var response = await signupData.postData(companyname.text,
           companyemail.text, companypass.text, companyphone.text);
+=======
+      var response = await signupData.postData(
+        userName.text, password.text, email.text, phoneNumber.text);
+>>>>>>> df81ac94725f882d904f530588898975bae8fb83
       print("=============controller $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
@@ -115,7 +143,7 @@ class CompanySignUpControllerImp extends CompanySignUPController {
       print(" not valid");
     }
   }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
   @override
   void onInit() {
     companyname = TextEditingController();

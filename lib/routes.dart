@@ -10,6 +10,7 @@ import 'package:ecommerce_application/view/screen/auth/success_%20signup.dart';
 import 'package:ecommerce_application/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:ecommerce_application/view/screen/auth/veriftycodesignup.dart';
 import 'package:ecommerce_application/view/screen/language.dart';
+import 'package:ecommerce_application/view/screen/home/navigationRail.dart';
 import 'package:ecommerce_application/view/screen/onboarding.dart';
 
 import 'package:get/get.dart';
