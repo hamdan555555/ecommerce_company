@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'core/localization/translation.dart';
 import 'routes.dart';
 import 'test.dart';
+import 'view/screen/home/navigationRail.dart';
 import 'view/screen/language.dart';
 
 void main() async {
@@ -28,11 +29,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: controller.appTheme,
       initialBinding: InitialBindings(),
-      // home: const Language(),
+      // home:  NavigationRailView(),
       // home: const Test(),
       //  routes: routes,
       getPages: routes,
-      // fuck you 
+      // fuck you
     );
   }
 }
