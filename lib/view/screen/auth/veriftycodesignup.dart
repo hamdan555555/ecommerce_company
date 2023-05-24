@@ -1,4 +1,5 @@
 import 'package:ecommerce_application/controller/auth/verifycodesignup_controller.dart';
+import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/colors.dart';
 import 'package:ecommerce_application/view/widget/auth/custombodylabel.dart';
 import 'package:ecommerce_application/view/widget/auth/custommainlabel.dart';
@@ -26,49 +27,59 @@ class VerifyCodeSignUp extends StatelessWidget {
               .copyWith(color: AppColor.grey),
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: ListView(
-          children: [
-            const CustomMainLabel(
-              mainLabel: 'Check Code',
-            ),
-            const CustomBodyLabel(
-              bodyLabel: 'Please Enter The Digit Code Sent To Your Email',
-            ),
-            OtpTextField(
-              borderWidth: 2.0,
-              fieldWidth: 50,
-              cursorColor: Color(0xFF512DA8),
-              numberOfFields: 5,
-              borderColor: Color(0xFF512DA8),
-              //set to true to show as box or false to show as dash
-              showFieldAsBox: true,
-              //runs when a code is typed in
-              onCodeChanged: (String code) {
-                //handle validation or checks here
-              },
-              //runs when every textfield is filled
-              onSubmit: (String verificationCode) {
-                controller.goToSuccessSignup();
-                // showDialog(
-                //     context: context,
-                //     builder: (context) {
-                //       return AlertDialog(
-                //         title: Text("Verification Code"),
-                //         content: Text('Code entered is $verificationCode'),
-                //       );
-                //     });
-              }, // end onSubmit
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
-        ),
+      body: GetBuilder<VerifyCodeSignUpControllerImp>(
+        builder: (controller) {
+          return controller.statusRequest == StatusRequest.loading
+              ? Center(
+                  child: Text("Loasing....."),
+                )
+              : Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: ListView(
+                    children: [
+                      const CustomMainLabel(
+                        mainLabel: 'Check Code',
+                      ),
+                      const CustomBodyLabel(
+                        bodyLabel:
+                            'Please Enter The Digit Code Sent To Your Email',
+                      ),
+                      OtpTextField(
+                        borderWidth: 2.0,
+                        fieldWidth: 50,
+                        cursorColor: Color(0xFF512DA8),
+                        numberOfFields: 5,
+                        borderColor: Color(0xFF512DA8),
+                        //set to true to show as box or false to show as dash
+                        showFieldAsBox: true,
+                        //runs when a code is typed in
+                        onCodeChanged: (String code) {
+                          //handle validation or checks here
+                        },
+                        //runs when every textfield is filled
+                        onSubmit: (String verificationCode) {
+                          controller.goToSuccessSignup(verificationCode);
+                          // showDialog(
+                          //     context: context,
+                          //     builder: (context) {
+                          //       return AlertDialog(
+                          //         title: Text("Verification Code"),
+                          //         content: Text('Code entered is $verificationCode'),
+                          //       );
+                          //     });
+                        }, // end onSubmit
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                    ],
+                  ),
+                );
+        },
       ),
     );
   }

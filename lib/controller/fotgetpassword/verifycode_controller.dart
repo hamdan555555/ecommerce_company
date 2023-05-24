@@ -1,34 +1,34 @@
 import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
-import 'package:ecommerce_application/data/datasource/remote/auth/verifycodesignupdata.dart';
+import 'package:ecommerce_application/core/function/handling_data.dart';
+import 'package:ecommerce_application/data/datasource/remote/forgetpassword/resetpassverifydata.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/function/handling_data.dart';
-
-abstract class VerifyCodeSignUpController extends GetxController {
+abstract class VerifyCodeController extends GetxController {
   checkCode();
-  goToSuccessSignup(String verifyCode);
+  goToResetPassword(String verifyCode);
 }
 
-class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
-  String? companyemail;
-
+class VerifyCodeControllerImp extends VerifyCodeController {
+  // late String verifyCode;
+  String? email;
+  ResetPasswordVerifyData resetPasswordVerifyData =
+      ResetPasswordVerifyData(Get.find());
   StatusRequest? statusRequest;
-
-  VerifyCodeSignupData verifycodesignupdata = VerifyCodeSignupData(Get.find());
 
   @override
   void onInit() {
+    email = Get.arguments['email'];
     super.onInit();
-    companyemail = Get.arguments['companyemail'];
   }
 
   @override
-  goToSuccessSignup(String verifyCode) async {
+  goToResetPassword(String verifyCode) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await verifycodesignupdata.postData(
-      companyemail!,
+    var response = await resetPasswordVerifyData.postData(
+      email!,
       verifyCode,
     );
     print("=============controller $response");
@@ -36,7 +36,7 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
         //  data.addAll(response['data']);
-        Get.offNamed(AppRoute.successSignUP);
+        Get.offNamed(AppRoute.resetPassword, arguments: {"email": email});
       } else {
         Get.defaultDialog(
             title: "Warning", middleText: "verify code is not correct");
@@ -44,12 +44,8 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
       }
     }
     update();
-
-    // Get.delete<SignU
   }
 
   @override
-  checkCode() {
-    throw UnimplementedError();
-  }
+  checkCode() {}
 }

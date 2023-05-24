@@ -1,5 +1,5 @@
-import 'package:ecommerce_application/controller/auth/fotgetpassword/forgetpassword_controller.dart';
-import 'package:ecommerce_application/controller/auth/fotgetpassword/verifycode_controller.dart';
+import 'package:ecommerce_application/controller/fotgetpassword/checkemail_controller.dart';
+import 'package:ecommerce_application/controller/fotgetpassword/verifycode_controller.dart';
 import 'package:ecommerce_application/core/constant/colors.dart';
 import 'package:ecommerce_application/view/widget/auth/custombuttonAuth.dart';
 import 'package:ecommerce_application/view/widget/auth/custommainlabel.dart';
@@ -51,7 +51,7 @@ class VerifyCode extends StatelessWidget {
               },
               //runs when every textfield is filled
               onSubmit: (String verificationCode) {
-                controller.goToResetPassword();
+                controller.goToResetPassword(verificationCode);
                 // showDialog(
                 //     context: context,
                 //     builder: (context) {

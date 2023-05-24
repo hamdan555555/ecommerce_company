@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
@@ -9,8 +11,9 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class CompanySignUPController extends GetxController {
- // signup();
+  signup();
   goToSignIn();
+  imagepicker();
 }
 
 class CompanySignUpControllerImp extends CompanySignUPController {
@@ -27,19 +30,9 @@ class CompanySignUpControllerImp extends CompanySignUPController {
   late TextEditingController email;
   late TextEditingController phoneNumber;
 
-<<<<<<< HEAD
   String city = '23'.tr;
   String payment = '25'.tr;
   String category = '24'.tr;
-=======
-
-
-//////////////////////////////////
-  String country = "country";
-  String city = "city";
-  String payment = "payment";
-  String category = "category";
->>>>>>> df81ac94725f882d904f530588898975bae8fb83
 
   final List<String> cities = [
     "Damascus",
@@ -74,14 +67,12 @@ class CompanySignUpControllerImp extends CompanySignUPController {
     update();
   }
 
-  RxString imagepath = ''.obs;
-
-  Future<void> getImage() async {
-    final ImagePicker picker = ImagePicker();
-    final image = await picker.getImage(source: ImageSource.gallery);
-    if (image != null) {
-      imagepath.value = image.path.toString();
-    }
+  File? file;
+  @override
+  Future imagepicker() async {
+    final myfile = await ImagePicker().getImage(source: ImageSource.gallery);
+    file = File(myfile!.path);
+    update();
   }
 
   onChangedCity(String val) {
@@ -98,37 +89,41 @@ class CompanySignUpControllerImp extends CompanySignUPController {
     category = val;
     update();
   }
-<<<<<<< HEAD
 
   SignUpData signupData = SignUpData(Get.find());
   List data = [];
   StatusRequest? statusRequest;
   @override
-=======
-  /////////////////////////////////////////////////////////////////////////
-SignUpData signupData = SignUpData(Get.find());
-    List data = [];
-   StatusRequest? statusRequest;
- @override
->>>>>>> df81ac94725f882d904f530588898975bae8fb83
   signup() async {
     var formData = formState.currentState;
-    if (formData!.validate()) {
+    if ((formData!.validate()) &&
+        file != null &&
+        cities.contains(city) &&
+        payments.contains(payment) &&
+        categories.contains(category)) {
+      String companyimage = base64Encode(file!.readAsBytesSync());
+      String imagename = file!.path.split("/").last;
       statusRequest = StatusRequest.loading;
       update();
-<<<<<<< HEAD
-      var response = await signupData.postData(companyname.text,
-          companyemail.text, companypass.text, companyphone.text);
-=======
       var response = await signupData.postData(
-        userName.text, password.text, email.text, phoneNumber.text);
->>>>>>> df81ac94725f882d904f530588898975bae8fb83
+          companyimage,
+          imagename,
+          companyname.text,
+          companyemail.text,
+          companypass.text,
+          companyphone.text,
+          city,
+          companyaddress.text,
+          category,
+          payment,
+          companybio.text);
       print("=============controller $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           data.addAll(response['data']);
-          Get.offNamed(AppRoute.verifyCodeSignUp);
+          Get.offNamed(AppRoute.verifyCodeSignUp,
+              arguments: {"companyemail": companyemail.text});
         } else {
           Get.defaultDialog(
               title: "Warning",
@@ -140,9 +135,11 @@ SignUpData signupData = SignUpData(Get.find());
 
       // Get.delete<SignU
     } else {
-      print(" not valid");
+      Get.defaultDialog(
+          title: "Warning", middleText: "Error Occured Please Try Again");
     }
   }
+
 //////////////////////////////////////////////////////////////////////////////////////////////
   @override
   void onInit() {
