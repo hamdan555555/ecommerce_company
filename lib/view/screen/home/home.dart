@@ -1,4 +1,6 @@
 import 'package:ecommerce_application/core/constant/imageconstant.dart';
+import 'package:ecommerce_application/core/constant/routesname.dart';
+import 'package:ecommerce_application/view/screen/home/addProductScreen.dart';
 import 'package:ecommerce_application/view/screen/language.dart';
 import 'package:ecommerce_application/view/widget/home/company_informations.dart';
 import 'package:ecommerce_application/view/widget/home/product_card.dart';
@@ -34,17 +36,23 @@ class HomeScreen extends StatelessWidget {
                       fit: BoxFit.cover),
                 ),
               ),
-              const CompanyInformation(
-                companyName: 'Mahmoud Hamza',
-                description: 'this company to make many prodacts',
-                imageCompany: 'asstes/images/logo.png',
+              Positioned(
+                right: 10,
+                child: const CompanyInformation(
+                  companyName: 'Mahmoud Hamza',
+                  description: 'this company to make many prodacts',
+                  imageCompany: 'asstes/images/logo.png',
+                ),
               ),
-              Transform.translate(
-                offset: const Offset(20, 290),
+              Positioned(
+                top: 270,
+                right: 10,
                 child: Row(
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(AddProduct());
+                      },
                       style: ElevatedButton.styleFrom(
                           minimumSize: Size(10, 43),
                           backgroundColor: Colors.lightGreenAccent[700],
@@ -69,10 +77,13 @@ class HomeScreen extends StatelessWidget {
                     maxCrossAxisExtent: 205,
                     crossAxisSpacing: 5,
                     mainAxisSpacing: 30,
+                    childAspectRatio: 0.8,
                   ),
                   itemCount: 20,
                   itemBuilder: (context, index) => ProductWidget(
-                        productName: 'Iphone',
+                        productName: 'Iphone Dmaa',
+                        description:
+                            'LocaleController" has been initialized LocaleController"  initialized LocaleController" has been initialized',
                         discount: '20 £',
                         imageProduct: AppImageAsset.background,
                         price: '30 £',
