@@ -15,6 +15,8 @@ import 'package:ecommerce_application/view/screen/onboarding.dart';
 
 import 'package:get/get.dart';
 
+import 'view/screen/home/addProductScreen.dart';
+
 List<GetPage<dynamic>>? routes = [
   GetPage(name:"/", page:()=> const Language(), middlewares: [
     MyMiddleWare(),
@@ -28,6 +30,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name:AppRoute.successSignUP, page:()=> const SuccessSignUp()),
   GetPage(name:AppRoute.verifyCodeSignUp, page:()=> const VerifyCodeSignUp()),
   GetPage(name:AppRoute.onboarding, page:()=> const OnBoarding()),
+   GetPage(name:AppRoute.addProduct, page:()=> const AddProduct()),
 ];
 
 // Map<String, Widget Function(BuildContext)> routess = {
