@@ -8,6 +8,7 @@ class TestController extends GetxController {
 
   List data = [];
   late StatusRequest statusRequest;
+
   getData() async {
     statusRequest = StatusRequest.loading;
     var response = await testData.getData();

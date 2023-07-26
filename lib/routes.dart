@@ -1,7 +1,7 @@
 import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/middleware/my_middleware.dart';
 import 'package:ecommerce_application/test_view.dart';
-import 'package:ecommerce_application/view/screen/auth/forgetpassword/forgetpassword.dart';
+import 'package:ecommerce_application/view/screen/auth/forgetpassword/checkemail.dart';
 import 'package:ecommerce_application/view/screen/auth/forgetpassword/success_reset_password.dart';
 import 'package:ecommerce_application/view/screen/auth/login.dart';
 import 'package:ecommerce_application/view/screen/auth/forgetpassword/resetpassword.dart';

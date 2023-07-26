@@ -5,12 +5,28 @@ class SignUpData {
   Crud crud;
   SignUpData(this.crud);
 
-    postData(String username,String password,String email,String phone, ) async {
+  postData(
+      String image,
+      String imagename,
+      String companyname,
+      String companyemail,
+      String companypass,
+      String companyphone,
+      String companycity,
+      String companyaddress,
+      String companycategory,
+      String companypay,
+      String companybio) async {
     var response = await crud.postData(AppLink.signupApi, {
-      "username": username,
-      "password":password ,
-      "email": email,
-      "phone":phone ,
+      "companyname": companyname,
+      "companyemail": companyemail,
+      "companypassword": companypass,
+      "companyphone": companyphone,
+      "companycity": companycity,
+      "companyaddress": companyaddress,
+      "companycategory": companycategory,
+      "companypay": companypay,
+      "companybio": companybio,
     });
     return response.fold((l) => l, (r) => r);
   }
