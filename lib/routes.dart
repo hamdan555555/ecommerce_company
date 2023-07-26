@@ -18,9 +18,10 @@ import 'package:get/get.dart';
 import 'view/screen/home/addProductScreen.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name:"/", page:()=> const Language(), middlewares: [
+  GetPage(name:"/", page:()=>  NavigationRailView(), middlewares: [
     MyMiddleWare(),
   ]), 
+ GetPage(name:AppRoute.addProduct, page:()=> const AddProduct()),
   GetPage(name:AppRoute.login, page:()=> const Login()),
   GetPage(name:AppRoute.signUp, page:()=> const CompanySignUp()),
   GetPage(name:AppRoute.forgetPassword, page:()=> const ForgetPassword()),
@@ -30,7 +31,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name:AppRoute.successSignUP, page:()=> const SuccessSignUp()),
   GetPage(name:AppRoute.verifyCodeSignUp, page:()=> const VerifyCodeSignUp()),
   GetPage(name:AppRoute.onboarding, page:()=> const OnBoarding()),
-   GetPage(name:AppRoute.addProduct, page:()=> const AddProduct()),
+  
 ];
 
 // Map<String, Widget Function(BuildContext)> routess = {
