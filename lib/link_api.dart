@@ -12,6 +12,11 @@ class AppLink {
 
 //========================= Forget password ==================================//
 
+
+  //======================== Home ===============================//
+   static const String addProduct = "http://10.0.2.2:8000/api/product/create";
+
+
   static const checkemail = "https://fakestoreapi.com/products";
   static const resetpass = "https://fakestoreapi.com/products";
   static const resetpassverify = "https://fakestoreapi.com/products";

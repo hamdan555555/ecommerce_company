@@ -7,6 +7,17 @@ validInput(String val, int min, int max, String type) {
     }
   }
 
+  if (type == "productname") {
+    if (!GetUtils.isUsername(val)) {
+      return "Enter Correct Product Name ";
+    }
+  }
+  if (type == "slug") {
+    if (!GetUtils.isUsername(val)) {
+      return "Enter Correct slug ";
+    }
+  }
+  
   if (type == "companyemail") {
     if (!GetUtils.isEmail(val)) {
       return "Enter Correct Email";
@@ -15,6 +26,16 @@ validInput(String val, int min, int max, String type) {
   if (type == "companyphone") {
     if (!GetUtils.isPhoneNumber(val)) {
       return "Enter Correct Phone Number";
+    }
+  }
+  if (type == "price") {
+    if (!GetUtils.isNum(val)) {
+      return "Enter Correct price ";
+    }
+  }
+  if (type == "quantity") {
+    if (!GetUtils.isNum(val)) {
+      return "Enter Correct quantity ";
     }
   }
   if (val.isEmpty) {

@@ -14,37 +14,34 @@ class CompanyInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.translate(
-      offset: const Offset(760, 90),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-             // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  companyName,
-                  style: const TextStyle(
-                    fontSize: 30,
-                  ),
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+           // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                companyName,
+                style: const TextStyle(
+                  fontSize: 30,
                 ),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+              ),
+              Text(
+                description,
+                style: const TextStyle(
+                  fontSize: 10,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          const CircleAvatar(
-            radius: 90,
-            backgroundImage: AssetImage(AppImageAsset.background),
-          ),
-        ],
-      ),
+        ),
+        const CircleAvatar(
+          radius: 90,
+          backgroundImage: AssetImage(AppImageAsset.background),
+        ),
+      ],
     );
   }
 }

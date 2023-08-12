@@ -29,11 +29,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: controller.appTheme,
       initialBinding: InitialBindings(),
-      // home:  NavigationRailView(),
+     // home: NavigationRailView(),
       // home: const Test(),
       //  routes: routes,
-      getPages: routes,
-      // fuck you
+        getPages: routes,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/function/checkinternet.dart';
 import 'statusrequest.dart';
 import 'package:http/http.dart ' as http;
@@ -8,7 +9,11 @@ import 'package:http/http.dart ' as http;
 
 
 class Crud {
-  Future<Either<StatusRequest, Map>> postData(String linkUrl, Map data) async {
+  Future<Either<StatusRequest, Map>> postData(
+      String linkUrl, Map<String, String> data) async {
+    print(data);
+    print(linkUrl);
+    print('X--------1');
     try {
       if (await checkInternet()) {
         var headers = {'Accept': 'application/json'};

@@ -15,8 +15,10 @@ import 'package:ecommerce_application/view/screen/onboarding.dart';
 
 import 'package:get/get.dart';
 
+import 'view/screen/home/addProductScreen.dart';
+
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: () => const Language(), middlewares: [
+  GetPage(name:"/", page:()=>  NavigationRailView(), middlewares: [
     MyMiddleWare(),
   ]),
   GetPage(name: AppRoute.login, page: () => const Login()),
