@@ -10,4 +10,5 @@ class AppImageAsset {
   static const String loading = '$rootIcons/loading.json';
   static const String nodata = '$rootIcons/nodata.json';
   static const String servererror = '$rootIcons/servererror.json';
+  static const String back = '$rootImage/background.jpg';
 }

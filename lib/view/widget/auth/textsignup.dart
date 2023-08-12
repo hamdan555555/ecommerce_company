@@ -25,7 +25,7 @@ class TextSignUpOrIn extends StatelessWidget {
           child: Text(
             text2,
             style: const TextStyle(
-                color: AppColor.colour3, fontWeight: FontWeight.bold),
+                color: AppColor.colour6, fontWeight: FontWeight.bold),
           ),
         ),
       ],

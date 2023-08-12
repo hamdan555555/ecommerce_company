@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/function/handling_data.dart';
@@ -26,30 +28,79 @@ class LoginControllerImp extends LoginController {
   }
 
   @override
+  
   login() async {
+    try{
     var formData = formState.currentState;
     if (formData!.validate()) {
+
       statusRequest = StatusRequest.loading;
       update();
       var response = await loginData.postData(email.text, password.text);
-      print("=============controller $response");
+      
+      print(response);
+
       statusRequest = handlingData(response);
-      if (StatusRequest.success == statusRequest) {
-        if (response['status'] == "success") {
-          //Get.offNamed(Home);
-        } else {
-          Get.defaultDialog(
-              title: "Warning", middleText: "Email or password not correct");
-          statusRequest = StatusRequest.failure;
-        }
+      print("on handling");
+    
+    if (StatusRequest.success==statusRequest){
+      print("success status");
+      if (response["message"] == "success login as company") {
+        print(response["message"]);
+          print("something");
+          Get.offNamed(AppRoute.successSignUP);
       }
-      update();
+      print("failedd");
+    }else{
+      print("email or pass not correct");
+       Get.defaultDialog(
+              title: "Warning", middleText: "Email or password not correct");
+
+    }
+    update();
+
+
+        // if (response['message'] == "success login as company") {
+        //   Get.offNamed(AppRoute.successSignUP);
+        //   print("message is correct");
+        // }
+        //  else {
+        //   Get.defaultDialog(
+        //       title: "Warning", middleText: "Email or password not correct");
+        //       print("you are here");              
+         // statusRequest = StatusRequest.failure;
+         //update();
+        //}
+     // }
 
       // Get.delete<SignU
-    } else {
-      print(" not valid");
+    
+    
+    
+    
+    //  else {
+    //   print("email or pass not correct");
+    //   Get.offNamed(AppRoute.signUp);
+    // }
+
+    // }else{
+    //   print("status not success");
+    // }
+
+
+  }
+  else{
+    print("not all data correct");
+    Get.defaultDialog(middleText: "data is not validated");
+  }
+    
+
+    }catch(e){
+      print(e);
     }
   }
+
+  
 
   @override
   void onInit() {
@@ -76,3 +127,5 @@ class LoginControllerImp extends LoginController {
     update();
   }
 }
+
+

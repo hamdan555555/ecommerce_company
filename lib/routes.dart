@@ -21,15 +21,14 @@ List<GetPage<dynamic>>? routes = [
   ]),
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signUp, page: () => const CompanySignUp()),
-  GetPage(name: AppRoute.forgetPassword, page: () => const ForgetPassword()),
-  GetPage(name: AppRoute.verifyCode, page: () => const VerifyCode()),
-  GetPage(name: AppRoute.resetPassword, page: () => const ResetPassword()),
+  //GetPage(name: AppRoute.forgetPassword, page: () => const ForgetPassword()),
+  //GetPage(name: AppRoute.verifyCode, page: () => const VerifyCode()),
+  //GetPage(name: AppRoute.resetPassword, page: () => const ResetPassword()),
   GetPage(
       name: AppRoute.successResetPassword,
       page: () => const SuccessResatPassword()),
   GetPage(name: AppRoute.successSignUP, page: () => const SuccessSignUp()),
-  GetPage(
-      name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
+ // GetPage(    name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
   GetPage(name: AppRoute.onboarding, page: () => const OnBoarding()),
 ];
 

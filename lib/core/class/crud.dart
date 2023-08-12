@@ -1,32 +1,34 @@
 import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_application/core/function/checkinternet.dart';
-
 import 'statusrequest.dart';
 import 'package:http/http.dart ' as http;
+
+
+
 
 class Crud {
   Future<Either<StatusRequest, Map>> postData(String linkUrl, Map data) async {
     try {
       if (await checkInternet()) {
-        var response = await http.post(Uri.parse(linkUrl), body: data);
+        var headers = {'Accept': 'application/json'};
+        var response =
+            await http.post(Uri.parse(linkUrl), headers: headers, body: data);
         if (response.statusCode == 200 || response.statusCode == 201) {
           Map responseBody = jsonDecode(response.body);
-          print("Mahmoud1");
-          print(responseBody);
-          print("Mahmoud2");
+          print("hamdaaaan 1");
           return Right(responseBody);
         } else {
-          print("Mahmoud3");
-          return const Left(StatusRequest.serverFailure);
+          print("hamdan status code not 200 201");
+          throw Exception('Failed hamdan');
         }
       } else {
-        print("Mahmoud4");
+        print("hamdan no internet");
         return const Left(StatusRequest.offLineFailure);
       }
-    } catch (_) {
-      print("Mahmoud5");
+    } catch (e) {
+      print(e);
+      print("hamdan an error caught");
       return const Left(StatusRequest.serverException);
     }
   }
