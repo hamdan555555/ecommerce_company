@@ -52,6 +52,7 @@ class HomeScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         Get.toNamed(AppRoute.addProduct);
+                       
                       },
                       style: ElevatedButton.styleFrom(
                           minimumSize: Size(10, 43),
