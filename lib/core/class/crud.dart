@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
-import 'package:ecommerce_application/core/function/checkinternet.dart';
+
 import 'package:get/get.dart';
 
 import 'statusrequest.dart';

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'core/localization/translation.dart';
 import 'routes.dart';
 import 'test.dart';
+import 'view/screen/auth/login.dart';
 import 'view/screen/home/navigationRail.dart';
 import 'view/screen/language.dart';
 
@@ -29,10 +30,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: controller.appTheme,
       initialBinding: InitialBindings(),
-     // home: NavigationRailView(),
+     home:Login(),
       // home: const Test(),
       //  routes: routes,
-        getPages: routes,
+      //  getPages: routes,
     );
   }
 }
