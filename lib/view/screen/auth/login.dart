@@ -47,16 +47,7 @@ class Login extends StatelessWidget {
                         key: controller.formState,
                         child: ListView(
                           children: [
-                            const Logo(),
-                            CustomMainLabel(
-                              mainLabel: '3'.tr,
-                            ),
-                            CustomBodyLabel(
-                              bodyLabel: '4'.tr,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
+                        
                             CustomTextForm(
                               isNumber: false,
                               valid: (val) {
