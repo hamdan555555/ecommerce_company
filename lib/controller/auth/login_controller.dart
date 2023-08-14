@@ -4,6 +4,8 @@ import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/function/handling_data.dart';
 import 'package:ecommerce_application/data/datasource/remote/auth/logindata.dart';
+import 'package:ecommerce_application/view/screen/home/home.dart';
+import 'package:ecommerce_application/view/screen/home/navigationRail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +50,7 @@ class LoginControllerImp extends LoginController {
       if (response["message"] == "success login as company") {
         print(response["message"]);
           print("something");
-          Get.offNamed(AppRoute.successSignUP);
+          Get.to(NavigationRailView());
       }
       print("failedd");
     }else{

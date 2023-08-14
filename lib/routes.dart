@@ -1,15 +1,12 @@
 import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/middleware/my_middleware.dart';
-import 'package:ecommerce_application/test_view.dart';
-import 'package:ecommerce_application/view/screen/auth/forgetpassword/checkemail.dart';
+
 import 'package:ecommerce_application/view/screen/auth/forgetpassword/success_reset_password.dart';
 import 'package:ecommerce_application/view/screen/auth/login.dart';
-import 'package:ecommerce_application/view/screen/auth/forgetpassword/resetpassword.dart';
+
 import 'package:ecommerce_application/view/screen/auth/signup.dart';
 import 'package:ecommerce_application/view/screen/auth/success_%20signup.dart';
-import 'package:ecommerce_application/view/screen/auth/forgetpassword/verifycode.dart';
-import 'package:ecommerce_application/view/screen/auth/veriftycodesignup.dart';
-import 'package:ecommerce_application/view/screen/language.dart';
+
 import 'package:ecommerce_application/view/screen/home/navigationRail.dart';
 import 'package:ecommerce_application/view/screen/onboarding.dart';
 
