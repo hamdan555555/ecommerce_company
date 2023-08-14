@@ -26,7 +26,11 @@ class CustomSlider extends GetView<OnBoardingControllerImp> {
                 fontSize: 23,
                 color: Color.fromARGB(255, 53, 41, 41)),
           ),
-          Image.asset(onBoardingList[index].image!),
+          Image.asset(
+            onBoardingList[index].image!,
+            width: 300,
+            height: 300,
+          ),
           Container(
             width: double.infinity,
             alignment: Alignment.center,

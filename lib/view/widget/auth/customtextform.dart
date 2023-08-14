@@ -38,7 +38,7 @@ class CustomTextForm extends StatelessWidget {
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(35),
-              borderSide: BorderSide(color: AppColor.colour3, width: 2)),
+              borderSide: BorderSide(color: AppColor.colour7, width: 2)),
           filled: true,
           fillColor: Colors.white,
           hintText: hintText,
@@ -56,7 +56,7 @@ class CustomTextForm extends StatelessWidget {
           suffixIcon: InkWell(
             child: Icon(
               iconData,
-              color: AppColor.colour3,
+              color: AppColor.colour7,
             ),
             onTap: onTapIcon,
           ),

@@ -12,6 +12,7 @@ class SuccessSignUp extends StatelessWidget {
     SuccessSignUpControllerImp controller =
         Get.put(SuccessSignUpControllerImp());
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -38,6 +39,7 @@ class SuccessSignUp extends StatelessWidget {
             ),
             const CustomBodyLabel(
               bodyLabel: 'Great, You Are Welcome in These Application',
+            
             ),
             const SizedBox(
               height: 30,

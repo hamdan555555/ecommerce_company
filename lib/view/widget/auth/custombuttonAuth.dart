@@ -9,12 +9,12 @@ class CustomButtonAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 10.0, left: 60, right: 60),
       child: MaterialButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        padding: const EdgeInsets.symmetric(vertical: 14.0),
+        padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 14),
         textColor: Colors.white,
-        color: AppColor.colour3,
+        color: AppColor.colour6,
         onPressed: onPressed,
         child: Text(text),
       ),

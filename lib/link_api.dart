@@ -5,10 +5,10 @@ class AppLink {
 
 //========================= Auth ==================================//
 //company signup link
-  static const signupApi = "https://fakestoreapi.com/products";
+  static const signupApi = "http://localhost:8000/api/SignUpCompany";
   static const verifysignup = "https://fakestoreapi.com/products";
   //companyLogin
-  static const login = "https://fakestoreapi.com/products";
+  static const login = "http://localhost:8000/api/SignInCompany";
 
 //========================= Forget password ==================================//
 

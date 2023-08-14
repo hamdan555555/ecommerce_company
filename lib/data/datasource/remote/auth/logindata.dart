@@ -11,10 +11,10 @@ class LoginData {
   StatusRequest? statusRequest;
 
   postData(String companyemail, String companypass) async {
-    statusRequest = StatusRequest.loading;
+    //statusRequest = StatusRequest.loading;
     var response = await crud.postData(AppLink.login, {
-      "companyemail": companyemail,
-      "companypass": companypass,
+      "CompanyEmail": companyemail,
+      "CompanyPassword": companypass,
     });
     return response.fold((l) => l, (r) => r);
   }

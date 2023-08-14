@@ -1,3 +1,4 @@
+import 'package:ecommerce_application/core/constant/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomBodyLabel extends StatelessWidget {
@@ -15,7 +16,7 @@ class CustomBodyLabel extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .bodyMedium!
-              .copyWith(color: Colors.white)),
+              .copyWith(color: AppColor.colour2)),
     );
   }
 }

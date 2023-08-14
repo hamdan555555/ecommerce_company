@@ -1,3 +1,4 @@
+import 'package:ecommerce_application/core/constant/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomMainLabel extends StatelessWidget {
@@ -12,7 +13,7 @@ class CustomMainLabel extends StatelessWidget {
       style: Theme.of(context)
           .textTheme
           .headlineLarge!
-          .copyWith(fontSize: 30, color: Colors.white),
+          .copyWith(fontSize: 30, color: AppColor.colour2),
     );
   }
 }
