@@ -1,126 +1,91 @@
-import 'dart:io';
-import 'dart:typed_data';
+import 'dart:html';
+
+import 'package:ecommerce_application/controller/auth/login_controller.dart';
+import 'package:ecommerce_application/core/class/crud.dart';
 import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
+import 'package:ecommerce_application/core/function/handling_data.dart';
 import 'package:ecommerce_application/data/datasource/remote/add_product.dart';
+import 'package:ecommerce_application/data/datasource/remote/auth/signup_data.dart';
+import 'package:ecommerce_application/view/screen/home/addProductScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
-import 'package:dio/dio.dart';
-import 'package:http_parser/http_parser.dart';
-
+import 'package:dio/dio.dart' as DIO;
+import 'dart:io'as IO;
 abstract class AddProductController extends GetxController {
   addProduct();
 }
 
 class AddProductControllerImp extends AddProductController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
-  late TextEditingController company_id;
-  late TextEditingController catigoryProduct_id;
   late TextEditingController name;
   late TextEditingController slug;
   late TextEditingController price;
   late TextEditingController quantity;
   late TextEditingController description;
-  late TextEditingController id;
-
-  AddProductData productData = AddProductData(Get.find());
+  String id = '2';
+  AddProductData dataProduct = AddProductData(Get.find());
   List data = [];
   StatusRequest statusRequest = StatusRequest.none;
 
-   File? file;
-  Uint8List? fileBytes;
+  File? file;
+  var myfile;
   @override
   Future imagepicker() async {
-    final myfile = await ImagePicker().getImage(source: ImageSource.gallery);
-    file = File(myfile!.path);
-    List<int> fileContent = await file!.readAsBytes();
-    fileBytes = Uint8List.fromList(fileContent);
+    myfile = await ImagePicker().getImage(source: ImageSource.gallery);
+    //  file = File(myfile!.path);
     update();
   }
 
+  @override
   addProduct() async {
-    print(file);
-    print(fileBytes);
+    var formData = formState.currentState;
+    if (formData!.validate()) {
+      statusRequest = StatusRequest.loading;
+      update();
+     // PickedFile? tmp = await ImagePicker().getImage(source: ImageSource.gallery);
+    //  IO.File image = IO.File(tmp!.path);
+      
+      var response = await dataProduct.postData(
+        name.text,
+        slug.text,
+        price.text,
+        quantity.text,
+        description.text,
+        id,
+       // image
+      );
 
-    print('ERROR 1');
-    var headers = {
-      'Accept': 'application/json',
-      'Authorization': 'Bearer 40|X9hVH72c8ZJ8ldAGT4XPFL5vRlAoQ9CLjDwGJtaS'
-    };
-    try {
-      var request =
-          http.MultipartRequest('POST', Uri.parse(AppRoute.addProduct));
-      request.fields.addAll({
-        'catigoryProduct_id': '3',
-        'name': name.text,
-        'slug': slug.text,
-        'price': price.text,
-        'quantity': quantity.text,
-        'description': description.text,
-      });
-      // request.files.add(await http.MultipartFile.fromBytes(
-      //   'field',
-      // ));
-      request.headers.addAll(headers);
-
-      http.StreamedResponse response = await request.send();
-
-      if (response.statusCode == 200) {
-        print(await response.stream.bytesToString());
-      } else {
-        print(response.reasonPhrase);
+      print("=============controller $response");
+      statusRequest = handlingData(response);
+      if (StatusRequest.success == statusRequest) {
+        if (response['message'] == "create product successfully") {
+          print('--------------------');
+          // data.addAll(response['data']);
+          Get.defaultDialog(
+              title: "Success", middleText: "create product successfully");
+        } else {
+          Get.defaultDialog(
+              title: "Warning",
+              middleText: "create product failed");
+          statusRequest = StatusRequest.failure;
+        }
       }
-    } catch (e) {
-      print(e);
+      update();
+
+      // Get.delete<SignUpControllerImp>();
+    } else {
+      print(" not valid");
     }
   }
-
-  // @override
-  // addProduct() async {
-  //   print('Error 1');
-  //   var formData = formState.currentState;
-  //   print('Error 2');
-  //   if (formData!.validate()) {
-  //     print('Error 3');
-  //     print('Error 4');
-  //     update();
-  //     var response = await productData.postData(
-  //       name.text,
-  //       slug.text,
-  //       price.text,
-  //       quantity.text,
-  //       description.text,
-  //     );
-  //     print('Error 5');
-  //     print("=============controller $response");
-  //     print('Error 6');
-  //     if (response["message"] == "create product successfully") {
-  //       print('Hello');
-  //       Get.offNamed(AppRoute.verifyCodeSignUp);
-  //     } else {
-  //       Get.defaultDialog(
-  //         title: "Warning",
-  //         middleText: "Phone Number or Email Already Exist",
-  //       );
-  //       statusRequest = StatusRequest.failure;
-  //     }
-
-  //     update();
-
-  //     // Get.delete<SignUpControllerImp>();
-  //   } else {
-  //     print(" not valid");
-  //   }
-  // }
 
   @override
   void onInit() {
     name = TextEditingController();
+    slug = TextEditingController();
     price = TextEditingController();
     quantity = TextEditingController();
-    slug = TextEditingController();
     description = TextEditingController();
     super.onInit();
   }
@@ -128,10 +93,15 @@ class AddProductControllerImp extends AddProductController {
   @override
   void dispose() {
     name.dispose();
+    slug.dispose();
     price.dispose();
     quantity.dispose();
-    slug.dispose();
     description.dispose();
     super.dispose();
+  }
+
+  @override
+  goToSignIn() {
+    Get.offNamed(AppRoute.login);
   }
 }

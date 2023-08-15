@@ -4,6 +4,7 @@ import 'package:ecommerce_application/core/constant/imageconstant.dart';
 import 'package:ecommerce_application/core/function/alertexitapp.dart';
 import 'package:ecommerce_application/core/function/validinput.dart';
 import 'package:ecommerce_application/view/widget/home/productTextForm.dart';
+import 'package:ecommerce_application/view/widget/home/textForm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widget/auth/custombuttonAuth.dart';
@@ -44,19 +45,19 @@ class AddProduct extends StatelessWidget {
                     children: [
                       ////////////////////////////////////
 
-                      CircleAvatar(
-                        backgroundColor: AppColor.colour3,
-                        radius: 70,
-                        child: controller.file == null
-                            ? const Icon(Icons.image_not_supported_outlined)
-                            : ClipOval(
-                                child: Image.network(
-                                controller.file!.path,
-                                fit: BoxFit.cover,
-                                height: 130,
-                                width: 130,
-                              )),
-                      ),
+                      // CircleAvatar(
+                      //   backgroundColor: AppColor.colour3,
+                      //   radius: 70,
+                      //   child: controller.file == null
+                      //       ? const Icon(Icons.image_not_supported_outlined)
+                      //       : ClipOval(
+                      //           child: Image.network(
+                      //           controller.file!.path,
+                      //           fit: BoxFit.cover,
+                      //           height: 130,
+                      //           width: 130,
+                      //         )),
+                      // ),
                       TextButton(
                           onPressed: () => controller.imagepicker(),
                           child: const Text(
@@ -96,25 +97,20 @@ class AddProduct extends StatelessWidget {
                           hintText: 'Enter Quantity Product'.tr,
                           labelText: 'Quantity Product'.tr,
                           iconData: Icons.cached_outlined),
-                      ProductTextForm(
+                      TextForm(
                         isNumber: false,
                         controller: controller.slug,
                         hintText: 'Enter Slug Product'.tr,
                         labelText: 'Slug Product'.tr,
                         iconData: Icons.lock_outlined,
-                        valid: (val) {
-                          return validInput(val!, 2, 16, "slug");
-                        },
                       ),
-                      ProductTextForm(
+                       TextForm(
                         isNumber: false,
                         controller: controller.description,
                         hintText: 'Enter Description'.tr,
                         labelText: 'Description'.tr,
                         iconData: Icons.description_outlined,
-                        valid: (val) {
-                          //return validInput(val!, 0, 300, "description");
-                        },
+                      
                       ),
                       CustomButtonAuth(
                         onPressed: () {

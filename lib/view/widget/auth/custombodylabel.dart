@@ -13,10 +13,9 @@ class CustomBodyLabel extends StatelessWidget {
       ),
       child: Text(bodyLabel,
           textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium!
-              .copyWith(color: AppColor.colour2)),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: AppColor.colour2,
+              )),
     );
   }
 }

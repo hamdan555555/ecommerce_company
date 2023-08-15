@@ -22,20 +22,17 @@ class SignUpData {
       String companycategory,
       String companypay,
       String companybio,
-      String image,
       
       ) async {
         
     var response = await crud.postData(
       AppLink.signupApi,
        {
-      "Image": image,
       "CompanyName": companyname,
       "CompanyEmail": companyemail,
       "CompanyPassword": companypass,
       "CompanyPhone": companyphone,
       "City": companycity,
-      // "companyaddress": companyaddress,
       "State": companystate,
       "Street": companystreet,
       "catigory_id": "1",

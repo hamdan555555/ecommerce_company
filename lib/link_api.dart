@@ -14,10 +14,10 @@ class AppLink {
 
 
   //======================== Home ===============================//
-   static const String addProduct = "http://10.0.2.2:8000/api/product/create";
-
-
-  static const checkemail = "https://fakestoreapi.com/products";
+   static const String addProduct = "http://localhost:8000/api/product/create";
+   static const String getAllPro = "http://localhost:8000/api/all_product";
+  
+  static const deleteProductApi = 'http://localhost:8000/api/delete_product/';
   static const resetpass = "https://fakestoreapi.com/products";
   static const resetpassverify = "https://fakestoreapi.com/products";
 }

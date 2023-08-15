@@ -24,13 +24,13 @@ class CompanyInformation extends StatelessWidget {
               Text(
                 companyName,
                 style: const TextStyle(
-                  fontSize: 30,
+                  fontSize: 50,
                 ),
               ),
               Text(
                 description,
                 style: const TextStyle(
-                  fontSize: 10,
+                  fontSize: 15,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

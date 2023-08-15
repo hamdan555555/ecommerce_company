@@ -4,10 +4,13 @@ import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/function/handling_data.dart';
 import 'package:ecommerce_application/data/datasource/remote/auth/logindata.dart';
+import 'package:ecommerce_application/view/screen/auth/success_%20signup.dart';
 import 'package:ecommerce_application/view/screen/home/home.dart';
 import 'package:ecommerce_application/view/screen/home/navigationRail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../view/screen/auth/signup.dart';
 
 abstract class LoginController extends GetxController {
   login();
@@ -17,6 +20,9 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
+  static var token = '';
+  static var companyName = '';
+  static var bio = '';
   LoginData loginData = LoginData(Get.find());
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController email;
@@ -26,41 +32,41 @@ class LoginControllerImp extends LoginController {
 
   @override
   goToSignUp() {
-    Get.offNamed(AppRoute.signUp);
+    Get.to(CompanySignUp());
   }
 
   @override
-  
   login() async {
-    try{
-    var formData = formState.currentState;
-    if (formData!.validate()) {
+    try {
+      var formData = formState.currentState;
+      if (formData!.validate()) {
+        statusRequest = StatusRequest.loading;
+        update();
+        var response = await loginData.postData(email.text, password.text);
 
-      statusRequest = StatusRequest.loading;
-      update();
-      var response = await loginData.postData(email.text, password.text);
-      
-      print(response);
+        print(response);
 
-      statusRequest = handlingData(response);
-      print("on handling");
-    
-    if (StatusRequest.success==statusRequest){
-      print("success status");
-      if (response["message"] == "success login as company") {
-        print(response["message"]);
-          print("something");
-          Get.to(NavigationRailView());
-      }
-      print("failedd");
-    }else{
-      print("email or pass not correct");
-       Get.defaultDialog(
+        statusRequest = handlingData(response);
+        print("on handling");
+
+        if (StatusRequest.success == statusRequest) {
+          print("success status");
+          if (response["message"] == "success login as company") {
+            token = response['token'];
+            print(response["message"]);
+        companyName = response['data']['CompanyName'];
+        bio = response['data']['Bio'];
+
+            print("something");
+            Get.to(SuccessSignUp());
+          }
+          print("failedd");
+        } else {
+          print("email or pass not correct");
+          Get.defaultDialog(
               title: "Warning", middleText: "Email or password not correct");
-
-    }
-    update();
-
+        }
+        update();
 
         // if (response['message'] == "success login as company") {
         //   Get.offNamed(AppRoute.successSignUP);
@@ -69,40 +75,30 @@ class LoginControllerImp extends LoginController {
         //  else {
         //   Get.defaultDialog(
         //       title: "Warning", middleText: "Email or password not correct");
-        //       print("you are here");              
-         // statusRequest = StatusRequest.failure;
-         //update();
+        //       print("you are here");
+        // statusRequest = StatusRequest.failure;
+        //update();
         //}
-     // }
+        // }
 
-      // Get.delete<SignU
-    
-    
-    
-    
-    //  else {
-    //   print("email or pass not correct");
-    //   Get.offNamed(AppRoute.signUp);
-    // }
+        // Get.delete<SignU
 
-    // }else{
-    //   print("status not success");
-    // }
+        //  else {
+        //   print("email or pass not correct");
+        //   Get.offNamed(AppRoute.signUp);
+        // }
 
-
-  }
-  else{
-    print("not all data correct");
-    Get.defaultDialog(middleText: "data is not validated");
-  }
-    
-
-    }catch(e){
+        // }else{
+        //   print("status not success");
+        // }
+      } else {
+        print("not all data correct");
+        Get.defaultDialog(middleText: "data is not validated");
+      }
+    } catch (e) {
       print(e);
     }
   }
-
-  
 
   @override
   void onInit() {
@@ -129,5 +125,3 @@ class LoginControllerImp extends LoginController {
     update();
   }
 }
-
-

@@ -61,23 +61,17 @@ class CompanySignUp extends StatelessWidget {
                                 CircleAvatar(
                                   backgroundColor: AppColor.colour6,
                                   radius: 70,
-                                  child: controller.file == null
-                                      ? Text(
+                                  child: 
+                                      Text(
                                           "No Image Chosen!",
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold),
                                         )
-                                      : ClipOval(
-                                          child: Image.network(
-                                          controller.file!.path,
-                                          fit: BoxFit.cover,
-                                          height: 130,
-                                          width: 130,
-                                        )),
+                                     ,
                                 ),
                                 TextButton(
-                                    onPressed: () => controller.imagepicker(),
+                                    onPressed: () {},
                                     child: Text(
                                       "set company image",
                                       style: TextStyle(
@@ -101,7 +95,7 @@ class CompanySignUp extends StatelessWidget {
                           CustomTextForm(
                               isNumber: false,
                               valid: (val) {
-                                return validInput(val!, 20, 50, "companyemail");
+                                return validInput(val!, 10, 50, "companyemail");
                               },
                               controller: controller.companyemail,
                               hintText: '6'.tr,
@@ -175,7 +169,7 @@ class CompanySignUp extends StatelessWidget {
                             labelText: "state",
                             iconData: Icons.location_on,
                             valid: (val) {
-                              return validInput(val!, 20, 100, "address");
+                              return validInput(val!, 3, 100, "address");
                             },
                           ),
                           CustomTextForm(
@@ -185,7 +179,7 @@ class CompanySignUp extends StatelessWidget {
                             labelText: "street",
                             iconData: Icons.location_on,
                             valid: (val) {
-                              return validInput(val!, 20, 100, "address");
+                              return validInput(val!, 3, 100, "address");
                             },
                           ),
                           CustomTextForm(
@@ -195,7 +189,7 @@ class CompanySignUp extends StatelessWidget {
                             labelText: "payment",
                             iconData: Icons.location_on,
                             valid: (val) {
-                              return validInput(val!, 20, 100, "address");
+                              return validInput(val!, 3, 100, "address");
                             },
                           ),
                           Padding(
@@ -263,12 +257,12 @@ class CompanySignUp extends StatelessWidget {
                             labelText: '7'.tr,
                             iconData: Icons.info,
                             valid: (val) {
-                              return validInput(val!, 20, 100, "companybio");
+                              return validInput(val!, 5, 100, "companybio");
                             },
                           ),
                           CustomButtonAuth(
                             onPressed: () {
-                             controller.postt();
+                             controller.signup();
                             },
                             text: '12'.tr,
                           ),

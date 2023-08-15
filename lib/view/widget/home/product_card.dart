@@ -3,27 +3,58 @@ import 'package:ecommerce_application/core/constant/imageconstant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/navigationRail_Controller.dart';
+
 class ProductWidget extends StatelessWidget {
   final String productName;
   final String price;
-  final String discount;
+  final String quantity;
   final String description;
   final String imageProduct;
+  final String idProduct;
+
   const ProductWidget(
       {super.key,
       required this.productName,
       required this.price,
       required this.imageProduct,
-      required this.discount,
-      required this.description});
+      required this.quantity,
+      required this.description, required this.idProduct, });
 
   @override
   Widget build(BuildContext context) {
+    NavigationRailController controller = Get.put(NavigationRailController());
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          print("Product");
+          print(productName);
+          Get.defaultDialog(
+              title: "Delete Product",
+              middleText: "Do you Want Delete Product ?",
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    controller.deleteProduct(idProduct);
+                    print('Product Deleted');
+                    Get.back();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(AppColor.blue),
+                    overlayColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  child: const Text("Delete"),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(AppColor.blue),
+                      overlayColor: MaterialStateProperty.all(Colors.green),
+                    ),
+                    child: const Text("Cancel")),
+              ]);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -78,7 +109,7 @@ class ProductWidget extends StatelessWidget {
                       ),
                       Text(
                         // '\$${product.price.toStringAsFixed(2)}'
-                        discount,
+                        quantity,
                         style: const TextStyle(
                             fontSize: 15.0, color: Colors.amber),
                       ),

@@ -28,18 +28,66 @@ class SuccessSignUp extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 120),
-              child: Icon(
-                Icons.check_circle_outline,
-                size: 200,
-                color: AppColor.purple,
-              ),
-            ),
-            const CustomBodyLabel(
-              bodyLabel: 'Great, You Are Welcome in These Application',
-            
+          children:  [
+           const Text('NOTE :',
+           style: TextStyle(
+            fontSize: 20,
+            color: Color.fromARGB(255, 219, 94, 135),
+           ),),
+             const Text('When you use our application, you will have a percentage of your monthly \nsales profits that may reach 10% .'),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children:const [
+                     Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Icon(
+                        Icons.add_chart,
+                        size: 200,
+                        color: Color.fromARGB(255, 219, 94, 135),
+                      ),
+                    ),
+                     CustomBodyLabel(
+                      bodyLabel:
+                          'You can manage and monitor a company  with ease',
+                    ),
+                  ],
+                ),
+                Column(
+                  children:const [
+                     Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Icon(
+                        Icons.add_card_outlined,
+                        size: 200,
+                        color: Color.fromARGB(255, 219, 94, 135),
+                      ),
+                    ),
+                     CustomBodyLabel(
+                      bodyLabel:
+                          'You can benefit from all electronic payment services',
+                    ),
+                  ],
+                ),
+                Column(
+                  children:const[
+                     Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 200,
+                        color: Color.fromARGB(255, 219, 94, 135),
+                      ),
+                    ),
+                     CustomBodyLabel(
+                      bodyLabel:
+                          'You can add, delete and modify your products with ease',
+                    ),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(
               height: 30,
