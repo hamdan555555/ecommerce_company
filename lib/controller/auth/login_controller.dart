@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ecommerce_application/controller/auth/signup_controller.dart';
 import 'package:ecommerce_application/core/class/statusrequest.dart';
 import 'package:ecommerce_application/core/constant/routesname.dart';
 import 'package:ecommerce_application/core/function/handling_data.dart';
@@ -54,8 +55,8 @@ class LoginControllerImp extends LoginController {
           if (response["message"] == "success login as company") {
             token = response['token'];
             print(response["message"]);
-        companyName = response['data']['CompanyName'];
-        bio = response['data']['Bio'];
+            companyName = response['data']['CompanyName'];
+            bio = response['data']['Bio'];
 
             print("something");
             Get.to(SuccessSignUp());

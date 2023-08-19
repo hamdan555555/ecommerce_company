@@ -8,6 +8,7 @@ import 'package:ecommerce_application/view/widget/home/textForm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widget/auth/custombuttonAuth.dart';
+import 'navigationRail.dart';
 
 class AddProduct extends StatelessWidget {
   const AddProduct({super.key});
@@ -28,6 +29,14 @@ class AddProduct extends StatelessWidget {
               .headlineLarge!
               .copyWith(color: AppColor.grey),
         ),
+        leading: IconButton(
+            onPressed: () {
+              Get.to(NavigationRailView());
+            },
+            icon: Icon(
+              Icons.arrow_back_outlined,
+            ),
+            color:Colors.black,),
       ),
       body: GetBuilder<AddProductControllerImp>(
         builder: (controller) =>
@@ -104,13 +113,12 @@ class AddProduct extends StatelessWidget {
                         labelText: 'Slug Product'.tr,
                         iconData: Icons.lock_outlined,
                       ),
-                       TextForm(
+                      TextForm(
                         isNumber: false,
                         controller: controller.description,
                         hintText: 'Enter Description'.tr,
                         labelText: 'Description'.tr,
                         iconData: Icons.description_outlined,
-                      
                       ),
                       CustomButtonAuth(
                         onPressed: () {

@@ -24,7 +24,7 @@ class AddProductControllerImp extends AddProductController {
   late TextEditingController price;
   late TextEditingController quantity;
   late TextEditingController description;
-  String id = '2';
+  String id = '14';
   AddProductData dataProduct = AddProductData(Get.find());
   List data = [];
   StatusRequest statusRequest = StatusRequest.none;

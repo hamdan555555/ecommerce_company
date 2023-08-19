@@ -39,7 +39,12 @@ class NavigationRailController extends GetxController {
   }
 
   List listProduct = [];
-  Future<http.Response> getAllProducts() async {
+  Future<void> getAllProducts() async {
+    try {
+      
+    } catch (e) {
+      
+    }
     print('favorite 1');
     http.Response response =
         await http.get(Uri.parse(AppLink.getAllPro), headers: {
@@ -51,24 +56,20 @@ class NavigationRailController extends GetxController {
     if (response.statusCode == 200) {
       var map = jsonDecode(response.body);
       print('favorite 2');
-      if (map['message'] == 'products not found') {
-           Get.defaultDialog(
+      if (map['message'] == 'get products successfully') {
+            listProduct = map['products'];
+      } else {
+          Get.defaultDialog(
           title: 'Warning',
           middleText: 'There is no Product',
         );
-        
-      } else {
-
-        listProduct = map['products'];
       }
       print('favorite 3');
       print(listProduct);
       print('favorite 4');
       update();
-      return response;
-    } else {
-      throw new Exception('can not load');
-    }
+    
+    } 
   }
 
   deleteProduct(String id) async {

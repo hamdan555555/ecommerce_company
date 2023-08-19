@@ -35,7 +35,7 @@ class SignUpData {
       "City": companycity,
       "State": companystate,
       "Street": companystreet,
-      "catigory_id": "1",
+      "catigory_id": companycategory,
       "Payment": companypay,
       "Bio": companybio,
     });

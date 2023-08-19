@@ -14,10 +14,11 @@ import 'package:get/get.dart';
 //import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart ' as http;
 
+import '../../view/screen/auth/success_ signup.dart';
+
 abstract class CompanySignUPController extends GetxController {
   signup();
   goToSignIn();
- 
 }
 
 class CompanySignUpControllerImp extends CompanySignUPController {
@@ -36,7 +37,7 @@ class CompanySignUpControllerImp extends CompanySignUPController {
   String city = '23'.tr;
   String payment = '25'.tr;
   String category = '24'.tr;
-  
+  static var categoryNum;
 
   final List<String> cities = [
     "Damascus",
@@ -50,8 +51,8 @@ class CompanySignUpControllerImp extends CompanySignUPController {
   ];
 
   final List<String> categories = [
-    "clothing",
-    "Electrical",
+    "Elecitrical",
+    "Clothing",
     "Electronics",
     "Furniture",
     "Stationary",
@@ -92,7 +93,7 @@ class CompanySignUpControllerImp extends CompanySignUPController {
 
   onChangedCategory(String val) {
     category = val;
-    var categoryNum = categories.indexOf(val);
+    categoryNum = categories.indexOf(val) + 1;
     print(categoryNum);
     update();
   }
@@ -118,7 +119,7 @@ class CompanySignUpControllerImp extends CompanySignUPController {
           city,
           companystate.text,
           companystreet.text,
-          category,
+          categoryNum.toString(),
           companypayment.text,
           companybio.text,
         );
@@ -127,7 +128,7 @@ class CompanySignUpControllerImp extends CompanySignUPController {
         statusRequest = handlingData(response);
         if (StatusRequest.success == statusRequest) {
           print("something");
-          Get.to(Login());
+            Get.to(Login());
           update();
 
           // Get.delete<SignU
@@ -216,18 +217,18 @@ class CompanySignUpControllerImp extends CompanySignUPController {
 
 //
 
-      // var responsed = await http.Response.fromStream(myresponse);
-      // final responsedata = json.decode(responsed.body);
+  // var responsed = await http.Response.fromStream(myresponse);
+  // final responsedata = json.decode(responsed.body);
 
-      // if(myresponse.statusCode==200|| myresponse.statusCode==201){
-      //   print("success");
-      //   print(responsedata);
-      // }else{
+  // if(myresponse.statusCode==200|| myresponse.statusCode==201){
+  //   print("success");
+  //   print(responsedata);
+  // }else{
 
-      //   print(myresponse.statusCode);
-      //   print("error");
-      //   print(responsedata["message"]);
-      // }
+  //   print(myresponse.statusCode);
+  //   print("error");
+  //   print(responsedata["message"]);
+  // }
   //   } catch (e) {
   //     print(e);
   //     print("ops");
